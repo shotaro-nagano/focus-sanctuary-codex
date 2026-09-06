@@ -1,0 +1,12 @@
+import { chromium } from '@playwright/test';
+import fs from 'node:fs/promises';
+await fs.mkdir('artifacts',{recursive:true});
+const browser=await chromium.launch({channel:'chrome',headless:true,args:['--enable-webgl','--ignore-gpu-blocklist']});
+const page=await browser.newPage({viewport:{width:1440,height:900},deviceScaleFactor:1});
+const errors=[];page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error')errors.push(m.text());});
+await page.goto('http://127.0.0.1:5173/?preview=inspect');await page.waitForTimeout(5000);
+await page.screenshot({path:'artifacts/desktop-pass2.png'});
+console.log(await page.locator('button').allTextContents());
+console.log(await page.evaluate(()=>{const canvas=document.querySelector('canvas'),gl=canvas?.getContext('webgl2');return{webgl:!!gl,renderer:gl?.getParameter(gl.RENDERER),canvas:[canvas?.width,canvas?.height],notice:document.querySelector('#notice')?.textContent};}));
+await page.setViewportSize({width:390,height:844});await page.waitForTimeout(1500);await page.screenshot({path:'artifacts/mobile-pass2.png'});
+console.log({errors});await browser.close();

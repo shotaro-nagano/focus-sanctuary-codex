@@ -4,7 +4,11 @@ A Vite + TypeScript + Three.js focus timer built from the attached Focus Sanctua
 
 The app is a single-page 3D timer: a chrome and glass chrysalis holds the current focus session, shifts shape for short and long breaks, and keeps Pomodoro-style records in localStorage. The 3D scene is procedural; no generated bitmap art is used for the sculpture.
 
-## Live/Local Usage
+## Live Site
+
+https://focus-sanctuary-codex.vercel.app/
+
+## Local Usage
 
 ```powershell
 npm install

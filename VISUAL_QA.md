@@ -33,7 +33,8 @@ Results:
 
 - Timer unit tests: 17 passed, 0 failed.
 - Production build: passed. Vite emitted a chunk-size warning because Three.js ships in the main bundle; the build output was still produced successfully.
-- Browser QA: 19 checks passed, 0 failed.
+- Browser QA, local dev server: 19 checks passed, 0 failed.
+- Browser QA, Vercel production URL: 19 checks passed, 0 failed at https://focus-sanctuary-codex.vercel.app/.
 - Desktop screenshot: `artifacts/desktop-final.png`, 1440 x 900, WebGL active, renderer reported as `WebKit WebGL`, no console errors.
 - Mobile screenshot: `artifacts/mobile-final.png`, 390 x 844, nonblank canvas and timer/footer layout passed bounds checks.
 - Demo video: `artifacts/focus-sanctuary-demo.webm`.
